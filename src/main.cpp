@@ -1,17 +1,18 @@
+#include <iostream>
+
+#include "Paddle.hpp"
 #include "SFML/Graphics.hpp"
 
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 600
+
 int main(int argc, char const *argv[]) {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Pong", sf::Style::Titlebar | sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Pong", sf::Style::Titlebar | sf::Style::Close);
+
+    const int yOffset = (WINDOW_HEIGHT / 2) - (Paddle::HEIGHT / 2);
+    Paddle p1(Paddle::WIDTH, yOffset), p2(WINDOW_WIDTH - (Paddle::WIDTH * 2), yOffset);
 
     sf::Event event;
-
-    sf::Vector2f pos1(50, 200), pos2(800 - 50, 200);
-
-    sf::RectangleShape p1(sf::Vector2f(20, 150));
-    sf::RectangleShape p2(sf::Vector2f(20, 150));
-    p1.setPosition(pos1);
-    p2.setPosition(pos2);
-
     const sf::Color clearColor(120, 15, 30, 255);
 
     while (window.isOpen()) {
@@ -19,14 +20,10 @@ int main(int argc, char const *argv[]) {
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-                pos1.x += 10;
-                pos2.x -= 10;
-            }
         }
-        p1.setPosition(pos1);
-        p2.setPosition(pos2);
         window.clear(clearColor);
+        // Update
+        // Draw
         window.draw(p1);
         window.draw(p2);
         window.display();
