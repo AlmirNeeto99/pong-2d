@@ -6,10 +6,10 @@
 
 class Paddle : public sf::RectangleShape {
    private:
-    static constexpr float WIDTH = 15, HEIGHT = 120;
     int x, y;
 
    public:
+    constexpr static float WIDTH = 15, HEIGHT = 120;
     Paddle(int, int);
 };
 
