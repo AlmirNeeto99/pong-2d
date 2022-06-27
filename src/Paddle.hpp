@@ -6,7 +6,7 @@
 
 class Paddle : public sf::RectangleShape {
    private:
-    static constexpr float WIDTH = 20, HEIGHT = 150;
+    static constexpr float WIDTH = 15, HEIGHT = 120;
     int x, y;
 
    public:
