@@ -9,6 +9,7 @@
 #include "Window.hpp"
 
 int main(int argc, char const *argv[]) {
+    srand(time(0));
     sf::RenderWindow window(sf::VideoMode(Window::WIDTH, Window::HEIGHT), "Pong", sf::Style::Titlebar | sf::Style::Close);
 
     const int yOffset = (Window::HEIGHT / 2) - (Paddle::HEIGHT / 2);
@@ -51,6 +52,7 @@ int main(int argc, char const *argv[]) {
         // Update
         p1.update(dt);
         p2.update(dt);
+		ball.update(dt);
         // Draw
         window.draw(p1);
         window.draw(p2);
