@@ -5,14 +5,14 @@ Paddle::Paddle(int x, int y) : RectangleShape(sf::Vector2f(this->WIDTH, this->HE
 }
 
 void Paddle::update(double dt) {
-    int speed = 50;
+    int speed = 100, velocity = 0;
     sf::Vector2f curPos = this->getPosition();
-
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        curPos.y -= (1.f * dt) * speed;
+        velocity = -1;
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-        curPos.y += (1.f * dt) * speed;
+        velocity = 1;
     }
+    curPos.y += (5.f * dt) * speed * velocity;
     if (curPos.y <= 0) {
         curPos.y = 0;
     } else if ((curPos.y + this->HEIGHT) >= Window::HEIGHT) {
