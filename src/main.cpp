@@ -8,6 +8,7 @@
 #include "Window.hpp"
 
 int main(int argc, char const *argv[]) {
+
     sf::RenderWindow window(sf::VideoMode(Window::WIDTH, Window::HEIGHT), "Pong", sf::Style::Titlebar | sf::Style::Close);
 
     const int yOffset = (Window::HEIGHT / 2) - (Paddle::HEIGHT / 2);
@@ -31,6 +32,7 @@ int main(int argc, char const *argv[]) {
 
     std::string fpsValue;
     std::stringstream fpsStream;
+
     while (window.isOpen()) {
         dt = clock.restart().asSeconds();
 
@@ -52,7 +54,7 @@ int main(int argc, char const *argv[]) {
         fpsStream.str(std::string());
         fps.setString(fpsString + fpsValue);
         window.draw(fps);
-		// Swapping buffers
+        // Swapping buffers
         window.display();
     }
 
