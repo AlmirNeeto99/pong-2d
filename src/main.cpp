@@ -16,6 +16,15 @@ int main(int argc, char const *argv[]) {
     sf::Clock clock;
     double dt = 0;
 
+    sf::Font font;
+    font.loadFromFile("../resources/arial.ttf"); // ! RELATIVE TO BUILD FOLDER
+
+    sf::Text fps;
+    fps.setFont(font);
+    fps.setString("FPS");
+    fps.setPosition(sf::Vector2f(0, 0));
+    fps.setCharacterSize(24);
+
     while (window.isOpen()) {
         dt = (double)clock.restart().asMicroseconds() / 100000;
         while (window.pollEvent(event)) {
@@ -30,6 +39,7 @@ int main(int argc, char const *argv[]) {
         // Draw
         window.draw(p1);
         window.draw(p2);
+        window.draw(fps);
         window.display();
     }
 
