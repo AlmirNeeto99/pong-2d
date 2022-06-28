@@ -3,16 +3,22 @@
 #include <iostream>
 #include <sstream>
 
+#include "Ball.hpp"
 #include "Paddle.hpp"
 #include "SFML/Graphics.hpp"
 #include "Window.hpp"
 
 int main(int argc, char const *argv[]) {
-
     sf::RenderWindow window(sf::VideoMode(Window::WIDTH, Window::HEIGHT), "Pong", sf::Style::Titlebar | sf::Style::Close);
 
     const int yOffset = (Window::HEIGHT / 2) - (Paddle::HEIGHT / 2);
     Paddle p1(Paddle::WIDTH, yOffset), p2(Window::WIDTH - (Paddle::WIDTH * 2), yOffset);
+
+    Ball ball(Window::WIDTH / 2, Window::HEIGHT / 2);
+    ball.setFillColor(sf::Color::Green);
+
+    sf::RectangleShape l1(sf::Vector2f(1, Window::HEIGHT));
+    l1.setPosition(sf::Vector2f((Window::WIDTH / 2) - .5f, 0));
 
     sf::Event event;
     const sf::Color clearColor(120, 15, 30, 255);
@@ -48,6 +54,8 @@ int main(int argc, char const *argv[]) {
         // Draw
         window.draw(p1);
         window.draw(p2);
+        window.draw(l1);
+        window.draw(ball);
         // FPS Logic
         fpsStream << std::fixed << std::setprecision(2) << floor(1.f / dt);
         fpsValue = fpsStream.str();
