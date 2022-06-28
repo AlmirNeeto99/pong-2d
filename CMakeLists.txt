@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.16)
 
 project(Pong)
 
-SET(SOURCES src/main.cpp src/Paddle.cpp)
+file(GLOB SRC "src/*.cpp")
+
+SET(SOURCES ${SRC})
 
 add_executable(Pong ${SOURCES})
 
