@@ -35,6 +35,7 @@ For building this project you're going to have:
 	- [ ] If ball hit right wall, player 1 scores. If ball hit left wall, payer 2 scores
 	- [ ] Write points to screen
 	- [ ] Restart game
+- [ ] Adjust ball velocity using paddle velocity (if ball if going down and hits a paddle going up, make ball go up)
 
 ---
 
