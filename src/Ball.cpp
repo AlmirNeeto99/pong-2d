@@ -10,8 +10,10 @@ Ball::Ball(int x, int y) : sf::CircleShape(this->RADIUS) {
 void Ball::update(double dt) {
     sf::Vector2f curPos = this->getPosition();
 
-    curPos.x += this->direction.x * dt * 50;
-    curPos.y += this->direction.y * dt * 50;
+    float speed = this->speed;
+
+    curPos.x += this->direction.x * dt * speed;
+    curPos.y += this->direction.y * dt * speed;
     if (((curPos.x + this->RADIUS) >= (Window::WIDTH - this->RADIUS)) || ((curPos.x - this->RADIUS) <= (0 - this->RADIUS))) {
         this->direction.x *= -1;
     }
